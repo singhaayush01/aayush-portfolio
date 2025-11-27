@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aayush Singh — Machine Learning and Full-Stack Developer Portfolio">
+  <meta name="keywords" content="Aayush, Aayush Singh, singhaayush01, portfolio, ML, AI, full stack, React, Node.js" />
+
+  <title>Aayush Singh | Portfolio</title>
+
+  <!-- UNICONS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+  <!-- SWIPER -->
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Animate on Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <link rel="shortcut icon" href="assets/img/favicon_edited.png" type="image/png" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">Aayush</a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list grid">
+          <li><a href="#home" class="nav__link active-link"><i class="uil uil-estate nav__icon"></i>Home</a></li>
+          <li><a href="#about" class="nav__link"><i class="uil uil-user nav__icon"></i>About</a></li>
+          <li><a href="#skills" class="nav__link"><i class="uil uil-file nav__icon"></i>Skills</a></li>
+          <li><a href="#portfolio" class="nav__link"><i class="uil uil-scenery nav__icon"></i>Portfolio</a></li>
+          <li><a href="#contact" class="nav__link"><i class="uil uil-message nav__icon"></i>Contact</a></li>
+        </ul>
+        <i class="uil uil-times nav__close" id="nav-close"></i>
+      </div>
+
+      <div class="nav__btns">
+        <!-- Theme Toggle -->
+        <i class="uil uil-moon change-theme" id="theme-button" title="Toggle Dark/Light Mode"></i>
+
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="uil uil-apps"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HOME -->
+    <section class="home section" id="home">
+      <div class="home__container container grid">
+        <div class="home__content grid">
+          <div class="home__social">
+            <a href="https://github.com/singhaayush01" target="_blank"><i class="uil uil-github-alt home__social-icon"></i></a>
+            <a href="https://www.linkedin.com/in/aayush-kumar-singh-dev/" target="_blank"><i class="uil uil-linkedin home__social-icon"></i></a>
+            <a href="https://www.instagram.com/aayush_singh_4449/" target="_blank"><i class="uil uil-instagram home__social-icon"></i></a>
+          </div>
+
+          <div class="home__img">
+            <svg class="home__blob" viewBox="0 0 200 187">
+              <mask id="mask0" mask-type="alpha">
+                <path d="M190.312 36.4879C206.582 62.1187 ... Z" />
+              </mask>
+              <g mask="url(#mask0)">
+                <path d="M190.312 36.4879C206.582 62.1187 ... Z" />
+                <image class="home__blob-img" x="8" y="7" href="assets/img/aayush.png" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="home__data">
+            <h1 class="home__title">Hi! 👋 I'm Aayush</h1>
+            <h3 class="home__subtitle">I'm <span class="auto-input"></span></h3>
+            <p class="home__description">Computer Science & Math student passionate about Machine Learning and Full-Stack Development.</p>
+            <a href="#contact" class="button button--flex">Contact Me <i class="uil uil-message button__icon"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section" id="about">
+      <h2 class="section__title">About Me</h2>
+      <span class="section__subtitle">My Introduction</span>
+
+      <div class="about__container container grid">
+        <img src="assets/img/about.jpg" alt="Aayush Singh" class="about__img" />
+        <div class="about__data">
+          <p class="about__description">
+            I'm currently studying Computer Science and Mathematics at Youngstown State University (Class of 2026).  
+            I love solving problems, designing intelligent systems, and building full-stack applications with React, Node.js, and SQL.
+          </p>
+          <div class="about__buttons">
+            <a download href="assets/pdf/aayushResume2025.pdf" class="button button--flex">
+              Download CV <i class="uil uil-download-alt button__icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills section" id="skills">
+      <h2 class="section__title">Skills</h2>
+      <span class="section__subtitle">Technical Expertise</span>
+
+      <div class="skills__container container grid">
+        <div class="skills__content skills__open">
+          <div class="skills__header">
+            <i class="uil uil-brackets-curly skills__icon"></i>
+            <h1 class="skills__title">Languages & Tools</h1>
+          </div>
+
+          <div class="skills__list grid">
+            <span>Python</span>
+            <span>C++</span>
+            <span>JavaScript</span>
+            <span>React</span>
+            <span>Node.js</span>
+            <span>SQL / MongoDB</span>
+            <span>PyTorch</span>
+            <span>Tailwind CSS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio section" id="portfolio">
+      <h2 class="section__title">Portfolio</h2>
+      <span class="section__subtitle">Featured Projects</span>
+
+      <div class="portfolio__container container grid">
+
+        <!-- Super Mario RL -->
+        <div class="portfolio__content grid">
+          <img src="assets/img/mario.png" class="portfolio__img" alt="Super Mario RL">
+          <div class="portfolio__data">
+            <h3 class="portfolio__title">Super Mario Reinforcement Learning Agent</h3>
+            <p class="portfolio__description">Trained an RL agent using Gymnasium + PyTorch to autonomously play Super Mario Bros with reward shaping and frame preprocessing.</p>
+            <a href="https://github.com/singhaayush01/mario-rl" target="_blank" class="button button--flex button--small">View Code<i class="uil uil-arrow-right button__icon"></i></a>
+          </div>
+        </div>
+
+        <!-- TinyTextGPT -->
+        <div class="portfolio__content grid">
+          <img src="assets/img/gpt.png" class="portfolio__img" alt="TinyTextGPT">
+          <div class="portfolio__data">
+            <h3 class="portfolio__title">TinyTextGPT</h3>
+            <p class="portfolio__description">Built a Transformer-based GPT model from scratch using PyTorch and BPE tokenization to generate text from Project Gutenberg datasets.</p>
+            <a href="https://github.com/singhaayush01/tinytextgpt" target="_blank" class="button button--flex button--small">View Code<i class="uil uil-arrow-right button__icon"></i></a>
+          </div>
+        </div>
+
+        <!-- MARIE Microcomputer -->
+        <div class="portfolio__content grid">
+          <img src="assets/img/marie.png" class="portfolio__img" alt="MARIE Microcomputer">
+          <div class="portfolio__data">
+            <h3 class="portfolio__title">MARIE Microcomputer System</h3>
+            <p class="portfolio__description">Simulated CPU and assembler in C++ implementing SKIPCOND, CLEAR, and custom instruction stats. Used AI tools for debugging and optimization.</p>
+            <a href="https://github.com/singhaayush01/MARIE-Microcomputer-System" target="_blank" class="button button--flex button--small">View Code<i class="uil uil-arrow-right button__icon"></i></a>
+          </div>
+        </div>
+
+        <!-- RSA -->
+        <div class="portfolio__content grid">
+          <img src="assets/img/rsa.png" class="portfolio__img" alt="RSA Algorithm">
+          <div class="portfolio__data">
+            <h3 class="portfolio__title">RSA Algorithm</h3>
+            <p class="portfolio__description">Implemented RSA encryption/decryption system in C++ using modular arithmetic and public/private key pairs.</p>
+            <a href="https://github.com/singhaayush01/RSA_E_D_Project" target="_blank" class="button button--flex button--small">View Code<i class="uil uil-arrow-right button__icon"></i></a>
+          </div>
+        </div>
+
+        <!-- Stern Brocot -->
+        <div class="portfolio__content grid">
+          <img src="assets/img/stern.png" class="portfolio__img" alt="Stern Brocot Approximation">
+          <div class="portfolio__data">
+            <h3 class="portfolio__title">Stern Brocot Approximation</h3>
+            <p class="portfolio__description">C++ implementation of the Stern Brocot algorithm for rational approximation and fraction simplification.</p>
+            <a href="https://github.com/singhaayush01/STERN_BROCT_APPROXIMATION" target="_blank" class="button button--flex button--small">View Code<i class="uil uil-arrow-right button__icon"></i></a>
+          </div>
+        </div>
+
+        <!-- Portfolio Website -->
+        <div class="portfolio__content grid">
+          <img src="assets/img/portfolio.jpg" class="portfolio__img" alt="Portfolio Website">
+          <div class="portfolio__data">
+            <h3 class="portfolio__title">Personal Portfolio Website</h3>
+            <p class="portfolio__description">Responsive portfolio built using HTML, CSS, and JavaScript to showcase my projects and experience.</p>
+            <a href="https://github.com/singhaayush01" target="_blank" class="button button--flex button--small">View Code<i class="uil uil-arrow-right button__icon"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact section" id="contact">
+      <h2 class="section__title">Contact Me</h2>
+      <span class="section__subtitle">Let's connect</span>
+
+      <div class="contact__container container grid">
+        <div class="contact__information">
+          <i class="uil uil-envelope contact__icon"></i>
+          <div>
+            <h3 class="contact__title">Email</h3>
+            <span class="contact__subtitle">asingh19@student.ysu.edu</span>
+          </div>
+        </div>
+        <div class="contact__information">
+          <i class="uil uil-github-alt contact__icon"></i>
+          <div>
+            <h3 class="contact__title">GitHub</h3>
+            <a href="https://github.com/singhaayush01" target="_blank" class="contact__subtitle">github.com/singhaayush01</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__bg">
+      <div class="footer__container container grid">
+        <div>
+          <h1 class="footer__title">Aayush Singh</h1>
+          <span class="footer__subtitle">Machine Learning & Full-Stack Developer</span>
+        </div>
+
+        <ul class="footer__links">
+          <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
+          <li><a href="#contact" class="footer__link">Contact</a></li>
+        </ul>
+
+        <div class="footer__socials">
+          <a href="https://github.com/singhaayush01" target="_blank"><i class="uil uil-github-alt footer__social"></i></a>
+          <a href="https://www.linkedin.com/in/aayush-kumar-singh-dev/" target="_blank"><i class="uil uil-linkedin footer__social"></i></a>
+          <a href="https://www.instagram.com/aayush_singh_4449/" target="_blank"><i class="uil uil-instagram footer__social"></i></a>
+        </div>
+      </div>
+      <p class="footer__copy">&copy; 2025 Aayush Singh | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- SCROLL-UP -->
+  <a href="#" class="scrollup" id="scroll-up"><i class="uil uil-arrow-up scrollup__icon"></i></a>
+
+  <!-- JS -->
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <script>
+    // Typed.js
+    new Typed(".auto-input", {
+      strings: ["a Machine Learning Enthusiast", "a Full-Stack Developer", "a CS Student"],
+      typeSpeed: 80,
+      backSpeed: 60,
+      loop: true,
+    });
+
+    // AOS Init
+    AOS.init({ offset: 200, duration: 1200 });
+
+    // Dark Mode Toggle
+    const themeButton = document.getElementById("theme-button");
+    const darkTheme = "dark-theme";
+    const iconTheme = "uil-sun";
+
+    const selectedTheme = localStorage.getItem("selected-theme");
+    const selectedIcon = localStorage.getItem("selected-icon");
+
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? "dark" : "light";
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? "uil-sun" : "uil-moon";
+
+    if (selectedTheme) {
+      document.body.classList[selectedTheme === "dark" ? "add" : "remove"](darkTheme);
+      themeButton.classList[selectedIcon === "uil-sun" ? "add" : "remove"](iconTheme);
+    }
+
+    themeButton.addEventListener("click", () => {
+      document.body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+      localStorage.setItem("selected-theme", getCurrentTheme());
+      localStorage.setItem("selected-icon", getCurrentIcon());
+    });
+  </script>
+</body>
+</html>
