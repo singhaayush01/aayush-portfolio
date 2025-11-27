@@ -41,7 +41,7 @@ const coreSkills = [
   { icon: <Icons.Cpu />, category: 'AI & Machine Learning', skills: ['PyTorch', 'Reinforcement Learning', 'Transformers', 'LangChain', 'NLP', 'Computer Vision'] },
   { icon: <Icons.Network />, category: 'Full-Stack Development', skills: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'TypeScript', 'Responsive Design'] },
   { icon: <Icons.Code />, category: 'Core Engineering', skills: ['Java (DSA)', 'Python', 'C++', 'System Design', 'Git/GitHub', 'REST APIs'] },
-  { icon: <Icons.Database />, category: 'Data & Cloud', skills: ['MongoDB', 'PostgreSQL', 'Drupal CMS', 'Vercel', 'AWS (Basic)', 'Docker'] },
+  { icon: <Icons.Database />, category: 'Data & Cloud', skills: ['MongoDB', 'PostgreSQL', 'Drupal CMS', 'Vercel', 'Data Modeling (SQL)', 'Deployment Automation'] },
 ];
 
 // RESTRUCTURED PROJECTS DATA - Grouped by Category
@@ -90,7 +90,7 @@ const projectCategories = [
         tech: ['C++', 'Cryptography', 'Number Theory', 'Systems Programming'],
         github: 'https://github.com/singhaayush01/RSA_E_D_Project',
         live: null,
-        image: null, // No image provided for this one
+        image: '/tinytextGpt.png', 
       },
       {
         title: 'Personal Portfolio Website',
@@ -99,7 +99,7 @@ const projectCategories = [
         tech: ['React', 'Next.js', 'Tailwind CSS', 'Vercel'],
         github: 'https://github.com/singhaayush01/aayush-portfolio', 
         live: null,
-        image: '/portfolio.jpg', // ADDED: Image path
+        image: '/portfolio-website.png', // ADDED: Image path
       },
     ]
   }
@@ -332,15 +332,18 @@ const App = () => {
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                <p>
-                  My journey is defined by a dual focus: <span className="text-gray-900 dark:text-white font-medium">precision</span> and <span className="text-gray-900 dark:text-white font-medium">innovation</span>.
-                </p>
-                <p>
-                  Professionally, I've spent three years as a <strong>Web Developer for Youngstown State University</strong>. It's a role that demands reliability. I manage the digital face of the Cliffe College, ensuring accessibility (WCAG), optimizing performance, and maintaining a massive Drupal CMS. I know what it takes to keep production systems running smoothly for thousands of users.
-                </p>
-                <p>
-                  Academically and creatively, I am driven by <strong>AI</strong>. Whether it's training Reinforcement Learning agents to play Super Mario or building RAG systems that make data conversational, I am constantly exploring how code can mimic intelligence.
-                </p>
+              <p>
+                My journey is defined by a dual focus: <span className="text-gray-900 dark:text-white font-medium">precision</span> and <span className="text-gray-900 dark:text-white font-medium">innovation</span>.
+              </p>
+              <p>
+                Professionally, I’ve spent three years as a <strong>Web Developer for Youngstown State University</strong>. It’s a role that demands reliability. I manage the digital face of the Cliffe College, ensuring accessibility (WCAG), optimizing performance, and maintaining a massive Drupal CMS. I know what it takes to keep production systems running smoothly for thousands of users.
+              </p>
+              <p>
+                But my creative drive is fueled by <strong>AI</strong>. When the early conversations about GPT began, I didn’t just listen—I started building. I taught myself the fundamentals through <strong>tinytextgpt</strong>, which led to a <strong>capstone project</strong> that was a total game-changer for me. That experience bridged the gap between code and cognition.
+              </p>
+              <p>
+                Now, I’m bringing these two worlds together. I’m currently developing a <strong>RAG system specifically for Cliffe College</strong>. While it’s an independent project (not an official university deployment yet), it’s my way of exploring how we can make institutional data conversational, alongside fun experiments like training Reinforcement Learning agents to play Super Mario.
+              </p>
               </div>
               
               <div className="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-700">
@@ -513,7 +516,7 @@ const App = () => {
             
             <div className="flex justify-center gap-6">
               <SocialLink 
-                href="mailto:asingh19@student.ysu.edu" 
+                href="mailto:aayushksinghdev@gmail.com" 
                 icon={<Icons.Mail />} 
                 label="Email Me"
               />
