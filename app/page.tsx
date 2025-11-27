@@ -11,7 +11,6 @@ type SocialLinkProps = {
 };
 
 // --- ICON DEFINITIONS (Lucide SVGs) ---
-// Using a slightly thinner stroke for a more elegant look
 const Icons = {
   Code: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
   Cpu: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /><path d="M15 9V4" /><path d="M9 9V4" /><path d="M9 15v5" /><path d="M15 15v5" /><path d="M4 9H9" /><path d="M4 15H9" /><path d="M15 9h5" /><path d="M15 15h5" /></svg>,
@@ -58,6 +57,7 @@ const projectCategories = [
         tech: ['Python', 'PyTorch', 'Gymnasium', 'DQN', 'CV'],
         github: 'https://github.com/singhaayush01/mario-rl',
         live: null,
+        image: '/mario.png', // ADDED: Image path
       },
       {
         title: 'Cliffe College Assistant (RAG System)',
@@ -66,6 +66,7 @@ const projectCategories = [
         tech: ['Next.js', 'LangChain', 'Python', 'Vector DB', 'React'],
         github: 'https://github.com/singhaayush01/cliffe-college-assistant',
         live: null,
+        image: '/cliffe-rag.png', // ADDED: Image path
       },
       {
         title: 'TinyTextGPT',
@@ -74,6 +75,7 @@ const projectCategories = [
         tech: ['PyTorch', 'Transformers', 'NLP', 'Tokenization', 'Python'],
         github: 'https://github.com/singhaayush01/TinyTextGPT-Gutenberg-Text-Transformer',
         live: null,
+        image: '/tinytextGpt.png', // ADDED: Image path
       },
     ]
   },
@@ -88,6 +90,16 @@ const projectCategories = [
         tech: ['C++', 'Cryptography', 'Number Theory', 'Systems Programming'],
         github: 'https://github.com/singhaayush01/RSA_E_D_Project',
         live: null,
+        image: null, // No image provided for this one
+      },
+      {
+        title: 'Personal Portfolio Website',
+        icon: <Icons.Globe />,
+        description: 'A responsive, modern portfolio built with Next.js and Tailwind CSS. It showcases my projects and skills with a focus on clean design, dark mode support, and accessibility.',
+        tech: ['React', 'Next.js', 'Tailwind CSS', 'Vercel'],
+        github: 'https://github.com/singhaayush01/aayush-portfolio', 
+        live: null,
+        image: '/portfolio.jpg', // ADDED: Image path
       },
     ]
   }
@@ -113,7 +125,8 @@ const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, label }) => (
 
 const App = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  // Changed default to 'false' for Light Mode start
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
 
@@ -266,7 +279,7 @@ const App = () => {
                 Building <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">Intelligent</span> Systems.
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto md:mx-0">
-                I'm Aayush, a Computer Science senior bridging the gap between <strong className="text-gray-900 dark:text-white font-semibold">robust engineering</strong> and <strong className="text-gray-900 dark:text-white font-semibold">adaptive AI</strong>. I don't just write code; I craft solutions that think.
+                I'm <strong>Aayush</strong>, a Computer Science senior bridging the gap between <strong>robust engineering</strong> and <strong>adaptive AI</strong>. I don't just write code; I craft solutions that think.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
@@ -290,8 +303,9 @@ const App = () => {
               <div className="relative w-72 h-72 sm:w-96 sm:h-96">
                 <div className="absolute inset-0 bg-violet-500/20 rounded-full blur-3xl animate-pulse"></div>
                 <div className="absolute inset-4 bg-indigo-500/20 rounded-full blur-2xl"></div>
+                {/* Updated Image Source to use Local File */}
                 <img 
-                  src="https://placehold.co/400x400/1e1b4b/ffffff?text=AKS" 
+                  src="/aayush.png" 
                   alt="Aayush K. Singh" 
                   className="relative z-10 w-full h-full object-cover rounded-3xl rotate-3 shadow-2xl border-4 border-white dark:border-gray-800"
                 />
@@ -454,21 +468,30 @@ const App = () => {
 
                       {/* Decorative/Visual Side */}
                       <div className={`lg:col-span-5 ${index % 2 === 1 ? 'lg:order-1' : ''} relative hidden lg:block`}>
-                        <div className="absolute inset-0 bg-linear-to-tr from-violet-500/20 to-indigo-500/20 rounded-3xl transform rotate-3 transition-transform group-hover:rotate-2"></div>
-                        <div className="relative bg-gray-100 dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 h-80 flex items-center justify-center overflow-hidden">
-                          {/* Code Snippet Visual */}
-                          <div className="w-full space-y-3 opacity-50">
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-1/2"></div>
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+                        {project.image ? (
+                          <div className="relative h-64 w-full overflow-hidden rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700">
+                            <img 
+                              src={project.image} 
+                              alt={project.title} 
+                              className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105" 
+                            />
                           </div>
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="p-4 bg-white dark:bg-gray-900 rounded-2xl shadow-xl">
-                              {React.cloneElement(project.icon, { width: 48, height: 48, className: "text-violet-600 dark:text-violet-400" })}
+                        ) : (
+                          <div className="relative bg-gray-100 dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 h-80 flex items-center justify-center overflow-hidden">
+                            <div className="absolute inset-0 bg-linear-to-tr from-violet-500/20 to-indigo-500/20 rounded-3xl transform rotate-3 transition-transform group-hover:rotate-2"></div>
+                            <div className="w-full space-y-3 opacity-50 relative z-10">
+                              <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
+                              <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-1/2"></div>
+                              <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
+                              <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+                            </div>
+                            <div className="absolute inset-0 flex items-center justify-center z-20">
+                              <div className="p-4 bg-white dark:bg-gray-900 rounded-2xl shadow-xl">
+                                {React.cloneElement(project.icon, { width: 48, height: 48, className: "text-violet-600 dark:text-violet-400" })}
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   ))}
