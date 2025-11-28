@@ -604,7 +604,7 @@ const App = () => {
               </div>
               <div className="mt-8">
                 <a 
-                  href="assets/pdf/resume_2025_nov.pdf" 
+                  href="/resume_2025_nov.pdf" 
                   download
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
