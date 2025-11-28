@@ -43,6 +43,19 @@ const projectCategories = [
     description: "Systems that learn, adapt, and reason.",
     projects: [
       {
+        title: 'Cliffe College Assistant (RAG System) (Independent Project)',
+        icon: <Icons.Code />,
+        bulletPoints: [
+          "Engineered and Deployed a Full-Stack RAG System: Architected a robust Retrieval-Augmented Generation (RAG) pipeline using LangChain, connecting a FastAPI backend to a PineconeVectorStore to convert large, unstructured college handbooks (PDFs and web content) into an interactive Q&A resource.",
+          "Advanced AI/ML Data & Logic: Developed a sophisticated ingestion process (ingest.py) that uses a Gemini-powered metadata extractor for intelligent content labeling and employed HuggingFaceEmbeddings for vector storage. The core logic leverages the gemini-2.0-flash LLM with a specialized system prompt for highly accurate, context-aware answers.",
+          "Modern Web Application Development: Built a responsive, production-ready chat interface using Next.js and React hooks (page.tsx) to deliver a smooth user experience, featuring asynchronous data fetching with axios and a graceful error handling mechanism when the AI is busy.",
+        ],
+        tech: ['Next.js', 'LangChain', 'Python', 'Vector DB', 'React'],
+        github: 'https://github.com/singhaayush01/cliffe-college-assistant',
+        live: null,
+        image: '/cliffe-rag.png', 
+      },
+      {
         title: 'Super Mario Reinforcement Learning Agent',
         icon: <Icons.Rocket />,
         bulletPoints: [
@@ -54,19 +67,6 @@ const projectCategories = [
         github: 'https://github.com/singhaayush01/mario-rl',
         live: null,
         image: '/mario.png', 
-      },
-      {
-        title: 'Cliffe College Assistant (RAG System)',
-        icon: <Icons.Code />,
-        bulletPoints: [
-          "I architected the Retrieval-Augmented Generation (RAG) pipeline from the ground up using LangChain, effectively bridging the gap between large, unstructured PDFs and a functional AI interface.",
-          "The system solved the core problem of document accessibility by converting static, siloed college handbooks into an interactive, natural language Q&A resource for students.",
-          "I built a responsive, modern frontend using Next.js to deliver an intuitive chat-style interface, providing students with accurate, conversationally-generated answers in real-time.",
-        ],
-        tech: ['Next.js', 'LangChain', 'Python', 'Vector DB', 'React'],
-        github: 'https://github.com/singhaayush01/cliffe-college-assistant',
-        live: null,
-        image: '/cliffe-rag.png', 
       },
       {
         title: 'TinyTextGPT',
