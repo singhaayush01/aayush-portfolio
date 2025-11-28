@@ -349,7 +349,6 @@ const App = () => {
         <div className="container mx-auto px-6 h-16 flex justify-between items-center">
           <button onClick={() => scrollToSection('home')} className="text-xl font-bold tracking-tight flex items-center gap-1 group">
             <span className="group-hover:text-accent transition-colors">Aayush</span>
-            <span className="text-muted-foreground">.dev</span>
           </button>
 
           <div className="hidden md:flex items-center gap-6">
@@ -605,7 +604,7 @@ const App = () => {
               </div>
               <div className="mt-8">
                 <a 
-                  href="/Users/aayushsingh/Documents/portfolio/assets/pdf/resume_2025_nov.pdf" 
+                  href="assets/pdf/resume_2025_nov.pdf" 
                   download
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
