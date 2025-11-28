@@ -17,6 +17,7 @@ const Icons = {
   Linkedin: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>,
   Github: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.52-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5a7.35 7.35 0 0 0-4 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5-1 1-1.4 2.25-1 3.5 0 3.5 3 5.5 6 5.5-1.15.8-2 2.1-2 3.5v4"/><path d="M9 18c-3.1.2-4.1-1.3-4-2"/></svg>,
   Send: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>,
+  Check: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
   Download: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
 };
 
@@ -44,8 +45,12 @@ const projectCategories = [
       {
         title: 'Super Mario Reinforcement Learning Agent',
         icon: <Icons.Rocket />,
-        description: 'An autonomous agent that learns to navigate complex platforming environments. I implemented a Deep Q-Network (DQN) using PyTorch and Gymnasium, focusing on computer vision preprocessing (grayscale, frame resizing) to enable the agent to "see" and react in real-time.',
-        tech: ['Python', 'PyTorch', 'Gymnasium', 'DQN', 'CV'],
+        bulletPoints: [
+          "I used Double Deep Q-Networks (DDQN), not just standard DQN, to eliminate overestimation bias, leading to a far more stable and efficient learning process for mastering Super Mario Bros.",
+          "I engineered a comprehensive vision pipeline using Computer Vision (CV) preprocessing, translating raw pixel input into a focused state representation, which enabled the agent to 'see' and react in real-time.",
+          "This project successfully demonstrated an agent capable of zero-shot generalization within the training environment, navigating complex platforming challenges and securing wins entirely autonomously.",
+        ],
+        tech: ['Python', 'PyTorch', 'Gymnasium', 'DDQN', 'CV'],
         github: 'https://github.com/singhaayush01/mario-rl',
         live: null,
         image: '/mario.png', 
@@ -53,7 +58,11 @@ const projectCategories = [
       {
         title: 'Cliffe College Assistant (RAG System)',
         icon: <Icons.Code />,
-        description: 'Bridging the gap between static documents and interactive AI. This Retrieval-Augmented Generation system allows students to query unstructured college handbooks using natural language. It combines a LangChain backend with a sleek Next.js frontend.',
+        bulletPoints: [
+          "I architected the Retrieval-Augmented Generation (RAG) pipeline from the ground up using LangChain, effectively bridging the gap between large, unstructured PDFs and a functional AI interface.",
+          "The system solved the core problem of document accessibility by converting static, siloed college handbooks into an interactive, natural language Q&A resource for students.",
+          "I built a responsive, modern frontend using Next.js to deliver an intuitive chat-style interface, providing students with accurate, conversationally-generated answers in real-time.",
+        ],
         tech: ['Next.js', 'LangChain', 'Python', 'Vector DB', 'React'],
         github: 'https://github.com/singhaayush01/cliffe-college-assistant',
         live: null,
@@ -62,7 +71,11 @@ const projectCategories = [
       {
         title: 'TinyTextGPT',
         icon: <Icons.Cpu />,
-        description: 'Demystifying Large Language Models by building one from scratch. This project implements the Transformer architecture, including self-attention mechanisms and custom Byte-Pair Encoding (BPE), trained on classic literature to generate coherent text.',
+        bulletPoints: [
+          "I implemented the foundational Transformer architecture (Attention is All You Need) from scratch in PyTorch, ensuring a deep, fundamental understanding of how modern LLMs are constructed, including self-attention and masked heads.",
+          "I handled the entire data preparation pipeline, including implementing custom Byte-Pair Encoding (BPE) tokenization to efficiently process large datasets of classic literature from Project Gutenberg.",
+          "This was a pure learning exercise in demystifying Large Language Models, proving my ability to master and implement complex, state-of-the-art AI models without relying on high-level libraries.",
+        ],
         tech: ['PyTorch', 'Transformers', 'NLP', 'Tokenization', 'Python'],
         github: 'https://github.com/singhaayush01/TinyTextGPT-Gutenberg-Text-Transformer',
         live: null,
@@ -77,16 +90,24 @@ const projectCategories = [
       {
         title: 'RSA Cryptography Implementation',
         icon: <Icons.Code />,
-        description: 'A deep dive into number theory and security. I implemented the RSA encryption algorithm in C++ from the ground up, handling large integer arithmetic and modular exponentiation to create a functional public-key cryptography system.',
+        bulletPoints: [
+          "I implemented the RSA public-key cryptosystem entirely in C++, forcing a rigorous focus on performance and low-level resource management not possible with higher-level languages.",
+          "I solved challenging number theory and computational problems firsthand, specifically handling large integer arithmetic and efficient modular exponentiation (the backbone of modern security).",
+          "This project demonstrated a foundational understanding of data security principles, successfully building a reliable system for secure, end-to-end encryption and decryption.",
+        ],
         tech: ['C++', 'Cryptography', 'Number Theory', 'Systems Programming'],
         github: 'https://github.com/singhaayush01/RSA_E_D_Project',
         live: null,
-        image: '/rsa.png', 
+        image: '/tinytextGpt.png', 
       },
       {
         title: 'Personal Portfolio Website',
         icon: <Icons.Globe />,
-        description: 'A responsive, modern portfolio built with Next.js and Tailwind CSS. It showcases my projects and skills with a focus on clean design, dark mode support, and accessibility.',
+        bulletPoints: [
+          "Engineered a high-performance Next.js application, prioritizing fast load times, code splitting, and optimal static asset delivery (via Vercel deployment) for a flawless user experience.",
+          "Implemented a clean, modern, and fully responsive UI using Tailwind CSS, complete with seamless dark-mode switching and accessibility considerations.",
+          "The project serves as a live, evolving documentation hub, demonstrating mastery of the modern JavaScript ecosystem (React, Next.js, and Continuous Deployment with GitHub).",
+        ],
         tech: ['React', 'Next.js', 'Tailwind CSS', 'Vercel'],
         github: 'https://github.com/singhaayush01/aayush-portfolio', 
         live: null,
@@ -100,83 +121,150 @@ const projectCategories = [
 
 const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  // NOTE: I've kept the Formspree endpoint you provided in the previous turn.
+  const endpoint = "https://formspree.io/f/xdkrwkdv"; 
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Use mailto for direct sending capability
-    const subject = `Portfolio Contact from ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0A${formData.message}`;
-    window.location.href = `mailto:asingh19@student.ysu.edu?subject=${subject}&body=${body}`;
+    if (status === 'sending') return;
+    setStatus('sending');
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({ 
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio Contact from ${formData.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(onClose, 3000); 
+      } else {
+        setStatus('error');
+      }
+    } catch (e) {
+      setStatus('error');
+    }
+  };
+
+  const handleClose = () => {
     onClose();
+    // Reset status on manual close
+    setTimeout(() => setStatus('idle'), 500); 
+  };
+
+  const isSending = status === 'sending';
+
+  const renderContent = () => {
+    if (status === 'success') {
+      return (
+        <div className="text-center py-10">
+          <div className="mx-auto w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-6 text-white">
+            <Icons.Check />
+          </div>
+          <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
+          <p className="text-zinc-500 dark:text-zinc-400">Thank you for reaching out. I'll be in touch soon.</p>
+        </div>
+      );
+    }
+
+    return (
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            required
+            className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={(e) => setFormData({...formData, name: e.target.value})}
+            disabled={isSending}
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            required
+            className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
+            placeholder="you@example.com"
+            value={formData.email}
+            onChange={(e) => setFormData({...formData, email: e.target.value})}
+            disabled={isSending}
+          />
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Message</label>
+          <textarea 
+            id="message" 
+            required
+            rows={4}
+            className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white resize-none"
+            placeholder="Let's build something..."
+            value={formData.message}
+            onChange={(e) => setFormData({...formData, message: e.target.value})}
+            disabled={isSending}
+          />
+        </div>
+        
+        <button 
+          type="submit" 
+          disabled={isSending || status === 'error'}
+          className={`w-full py-3 text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] shadow-lg shadow-indigo-500/20 
+            ${isSending ? 'bg-indigo-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700'} 
+            ${status === 'error' ? 'bg-red-600' : ''}`}
+        >
+          {isSending ? (
+            <>Sending...</>
+          ) : status === 'error' ? (
+            <>Error! Try again.</>
+          ) : (
+            <>Send Message <Icons.Send /></>
+          )}
+        </button>
+        {status === 'error' && (
+          <p className="text-red-500 text-sm text-center">There was an issue sending your message. Please check your Formspree setup.</p>
+        )}
+      </form>
+    );
   };
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
-        onClick={onClose}
+        onClick={handleClose}
       />
       <div className="relative bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300 border border-zinc-200 dark:border-zinc-800">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-white">Send a Message</h3>
-            <button onClick={onClose} className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-zinc-500">
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-white">Get in Touch</h3>
+            <button onClick={handleClose} className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-zinc-500">
               <Icons.X />
             </button>
           </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                required
-                className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                required
-                className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
-                placeholder="you@example.com"
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Message</label>
-              <textarea 
-                id="message" 
-                required
-                rows={4}
-                className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white resize-none"
-                placeholder="Let's build something..."
-                value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
-              />
-            </div>
-            
-            <button 
-              type="submit" 
-              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] shadow-lg shadow-indigo-500/20"
-            >
-              Send Message <Icons.Send />
-            </button>
-          </form>
+          {renderContent()}
         </div>
       </div>
     </div>
   );
 };
+
 
 // --- MAIN APP COMPONENT ---
 
@@ -470,9 +558,16 @@ const App = () => {
                               {project.live && <a href={project.live} target="_blank" className="text-muted-foreground hover:text-foreground"><Icons.Globe /></a>}
                             </div>
                           </div>
-                          <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
-                            {project.description}
-                          </p>
+                          
+                          {/* UPDATED: Rendering bullet points */}
+                          <ul className="text-muted-foreground mb-6 leading-relaxed text-sm space-y-3">
+                            {project.bulletPoints.map((point, index) => (
+                              <li key={index} className="flex items-start">
+                                <span className="text-accent mr-2 mt-0.5">&#x2022;</span>
+                                <span dangerouslySetInnerHTML={{ __html: point }} />
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                         <div className="flex flex-wrap gap-2 mt-auto">
                           {project.tech.map((t, k) => (
@@ -496,16 +591,16 @@ const App = () => {
             <div>
               <h2 className="text-2xl font-bold mb-6">About Me</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  I've spent the last three years as a Web Developer for Youngstown State University, ensuring digital accessibility and performance for thousands of users.
-                </p>
-                <p>
-                  My goal is to join an engineering team where I can apply my skills in system design and AI to build impactful software. I am eligible for OPT/CPT starting May 2026.
-                </p>
+              <p>
+                I don't just write code; I build intelligent systems. I thrive at the fascinating intersection of robust Full-Stack Engineering and adaptive AI/Machine Learning. On one side, I've spent three years as a Web Developer for Youngstown State University, where I gained a deep professional commitment to system stability, digital accessibility, and ensuring flawless performance for thousands of users daily.
+              </p>
+              <p>
+                  On the other side, my academic and personal drive is dedicated to complexity and innovation. Whether I'm wrestling with Double DQN to teach Mario new tricks or architecting serverless RAG pipelines to make documents conversational, I constantly push what code can learn. My goal is to join a forward-thinking engineering team where I can combine my front-to-back development expertise with my AI specialization to build truly impactful products. I'm eligible for exciting roles starting May 2026.
+              </p>
               </div>
               <div className="mt-8">
                 <a 
-                  href="assets/pdf/aayushResume2025.pdf" 
+                  href="assets/pdf/resume_2025_nov.pdf" 
                   download
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
