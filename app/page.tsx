@@ -132,30 +132,47 @@ const App = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false); // New state to prevent hydration mismatch
 
   // --- Effects and Handlers ---
 
+  // 1. Initial Load Effect: Only runs ONCE on mount
   useEffect(() => {
-    // Apply dark class to <html> for Tailwind dark mode
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('darkMode', isDarkMode.toString());
-  }, [isDarkMode]);
+    setMounted(true); // Mark as mounted
 
-  useEffect(() => {
-    // Initial check for system preference or saved preference
     const savedMode = localStorage.getItem('darkMode');
     const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedMode !== null) {
-      setIsDarkMode(savedMode === 'true');
+    // Check storage first, then system preference
+    if (savedMode === 'true') {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else if (savedMode === 'false') {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
     } else {
+      // No local storage found, use system preference
       setIsDarkMode(systemPrefersDark);
+      if (systemPrefersDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   }, []);
+
+  // 2. Toggle Effect: Runs when isDarkMode changes, BUT only after mounted
+  useEffect(() => {
+    if (!mounted) return; // Skip this effect on server-side or before hydration
+
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false');
+    }
+  }, [isDarkMode, mounted]);
 
   useEffect(() => {
     const handleScrollState = () => {
@@ -191,6 +208,10 @@ const App = () => {
 
   const profileImageSrc = isDarkMode ? '/aayush-dark.png' : '/aayush.png';
 
+  // Prevent hydration mismatch by not rendering theme-dependent SVG/Images until mounted
+  // (Optional optimization, but good for consistent UI)
+  if (!mounted) return null; 
+
   return (
     <div className={`min-h-screen font-sans transition-colors duration-300 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
       
@@ -225,7 +246,7 @@ const App = () => {
             ))}
             <button
               onClick={() => setIsDarkMode(prev => !prev)}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:ring-2 hover:ring-violet-200 dark:hover:ring-violet-900 transition-all"
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:ring-2 hover:ring-violet-200 dark:hover:ring-violet-900 transition-all cursor-pointer"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
