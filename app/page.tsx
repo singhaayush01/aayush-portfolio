@@ -44,7 +44,6 @@ const coreSkills = [
   { icon: <Icons.Database />, category: 'Data & Cloud', skills: ['MongoDB', 'PostgreSQL', 'Drupal CMS', 'Vercel', 'Data Modeling (SQL)', 'Deployment Automation'] },
 ];
 
-// RESTRUCTURED PROJECTS DATA - Grouped by Category
 const projectCategories = [
   {
     title: "Machine Learning & AI",
@@ -57,8 +56,8 @@ const projectCategories = [
         tech: ['Python', 'PyTorch', 'Gymnasium', 'DQN', 'CV'],
         github: 'https://github.com/singhaayush01/mario-rl',
         live: null,
-        image: '/mario.png', // The light mode image
-        darkImage: '/mario-dark.png', // ADDED: Dark mode specific image
+        image: '/mario.png', 
+        darkImage: '/mario-dark.png',
       },
       {
         title: 'Cliffe College Assistant (RAG System)',
@@ -67,8 +66,8 @@ const projectCategories = [
         tech: ['Next.js', 'LangChain', 'Python', 'Vector DB', 'React'],
         github: 'https://github.com/singhaayush01/cliffe-college-assistant',
         live: null,
-        image: '/cliffe-rag.png', // The light mode image
-        darkImage: '/cliffe-rag-dark.png', // ADDED: Dark mode specific image
+        image: '/cliffe-rag.png', 
+        darkImage: '/cliffe-rag-dark.png', 
       },
       {
         title: 'TinyTextGPT',
@@ -77,8 +76,8 @@ const projectCategories = [
         tech: ['PyTorch', 'Transformers', 'NLP', 'Tokenization', 'Python'],
         github: 'https://github.com/singhaayush01/TinyTextGPT-Gutenberg-Text-Transformer',
         live: null,
-        image: '/tinytextGpt.png', // The light mode image
-        darkImage: '/tinytextGpt-dark.png', // ADDED: Dark mode specific image
+        image: '/tinytextGpt.png', 
+        darkImage: '/tinytextGpt-dark.png', 
       },
     ]
   },
@@ -93,8 +92,8 @@ const projectCategories = [
         tech: ['C++', 'Cryptography', 'Number Theory', 'Systems Programming'],
         github: 'https://github.com/singhaayush01/RSA_E_D_Project',
         live: null,
-        image: '/rsa.png', // Adjusted placeholder image name
-        darkImage: '/rsa-dark.png', // ADDED: Dark mode specific image
+        image: '/rsa.png', 
+        darkImage: '/rsa-dark.png', 
       },
       {
         title: 'Personal Portfolio Website',
@@ -103,8 +102,8 @@ const projectCategories = [
         tech: ['React', 'Next.js', 'Tailwind CSS', 'Vercel'],
         github: 'https://github.com/singhaayush01/aayush-portfolio', 
         live: null,
-        image: '/portfolio-website.png', // The light mode image
-        darkImage: '/portfolio-website-dark.png', // ADDED: Dark mode specific image
+        image: '/portfolio-website.png', 
+        darkImage: '/portfolio-website-dark.png', 
       },
     ]
   }
@@ -137,8 +136,12 @@ const App = () => {
   // --- Effects and Handlers ---
 
   useEffect(() => {
-    // Apply dark class to <html> or <body> for Tailwind dark mode to work
-    document.documentElement.classList.toggle('dark', isDarkMode);
+    // Apply dark class to <html> for Tailwind dark mode
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
     localStorage.setItem('darkMode', isDarkMode.toString());
   }, [isDarkMode]);
 
@@ -159,7 +162,6 @@ const App = () => {
       setScrolled(window.scrollY > 20);
       
       const sections = navItems.map(item => document.getElementById(item.id));
-      // Offset by navbar height for accurate detection
       const scrollY = window.pageYOffset + 150; 
 
       sections.forEach(current => {
@@ -190,7 +192,6 @@ const App = () => {
   const profileImageSrc = isDarkMode ? '/aayush-dark.png' : '/aayush.png';
 
   return (
-    // Removed explicit bg-gray-900/text-gray-100 from here to let tailwind classes handle it
     <div className={`min-h-screen font-sans transition-colors duration-300 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
       
       {/* NAVBAR */}
@@ -281,7 +282,7 @@ const App = () => {
       <main>
         {/* HERO SECTION */}
         <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-          {/* FIXED: Changed bg-gradient-to-b to bg-linear-to-b */}
+          {/* UPDATED: Uses bg-linear-to-b (Tailwind v4 syntax) */}
           <div className="absolute inset-0 bg-linear-to-b from-violet-50/50 dark:from-violet-900/10 to-transparent z-0"></div>
           <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.08] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 pointer-events-none"></div>
           
@@ -291,7 +292,7 @@ const App = () => {
                 Available for Roles Starting May 2026
               </div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
-                {/* FIXED: Changed bg-gradient-to-r to bg-linear-to-r */}
+                {/* UPDATED: Uses bg-linear-to-r (Tailwind v4 syntax) */}
                 Building <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">Intelligent</span> Systems.
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto md:mx-0">
@@ -327,7 +328,7 @@ const App = () => {
                   className="relative z-10 w-full h-full object-cover rounded-3xl rotate-3 shadow-2xl border-4 border-white dark:border-gray-800"
                 />
                 
-                {/* Floating Tech Badges - Colors already dark mode friendly */}
+                {/* Floating Tech Badges */}
                 <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 animate-bounce delay-700">
                   <Icons.Cpu />
                 </div>
@@ -434,75 +435,82 @@ const App = () => {
                 </div>
 
                 <div className="space-y-20">
-                  {category.projects.map((project, index) => (
-                    <div key={index} className="group relative grid lg:grid-cols-12 gap-8 items-center">
-                      {/* Content Side */}
-                      <div className={`lg:col-span-7 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                        <div className="flex items-center space-x-3 mb-4 text-violet-600 dark:text-violet-400">
-                          {project.icon}
-                          <span className="text-sm font-bold tracking-wide uppercase">Featured Project</span>
-                        </div>
-                        <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                          {project.title}
-                        </h3>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6 border border-gray-100 dark:border-gray-700 shadow-sm">
-                          {project.description}
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-2 mb-8">
-                          {project.tech.map((t, i) => (
-                            <span key={i} className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
+                  {category.projects.map((project, index) => {
+                    // Determine the active image based on Dark Mode state
+                    const activeImage = isDarkMode && project.darkImage ? project.darkImage : project.image;
 
-                        <div className="flex items-center gap-4">
-                          {project.github && (
-                            <a 
-                              href={project.github} 
-                              target="_blank" 
-                              rel="noreferrer"
-                              className="flex items-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:opacity-90 transition-opacity"
-                            >
-                              <Icons.Github />
-                              <span>View Code</span>
-                            </a>
-                          )}
-                          {project.live && (
-                            <a 
-                              href={project.live} 
-                              target="_blank" 
-                              rel="noreferrer"
-                              className="flex items-center gap-2 px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                            >
-                              <Icons.Globe />
-                              <span>Live Demo</span>
-                            </a>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Decorative/Visual Side */}
-                      <div className={`lg:col-span-5 ${index % 2 === 1 ? 'lg:order-1' : ''} relative hidden lg:block`}>
-                        <div className="absolute inset-0 bg-linear-to-tr from-violet-500/20 to-indigo-500/20 rounded-3xl transform rotate-3 transition-transform group-hover:rotate-2"></div>
-                        <div className="relative bg-gray-100 dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 h-80 flex items-center justify-center overflow-hidden">
-                          {/* Code Snippet Visual */}
-                          <div className="w-full space-y-3 opacity-50">
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-1/2"></div>
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
-                            <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+                    return (
+                      <div key={index} className="group relative grid lg:grid-cols-12 gap-8 items-center">
+                        {/* Content Side */}
+                        <div className={`lg:col-span-7 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                          <div className="flex items-center space-x-3 mb-4 text-violet-600 dark:text-violet-400">
+                            {project.icon}
+                            <span className="text-sm font-bold tracking-wide uppercase">Featured Project</span>
                           </div>
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="p-4 bg-white dark:bg-gray-900 rounded-2xl shadow-xl">
-                              {React.cloneElement(project.icon, { width: 48, height: 48, className: "text-violet-600 dark:text-violet-400" })}
-                            </div>
+                          <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                            {project.title}
+                          </h3>
+                          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6 border border-gray-100 dark:border-gray-700 shadow-sm">
+                            {project.description}
+                          </div>
+                          
+                          <div className="flex flex-wrap gap-2 mb-8">
+                            {project.tech.map((t, i) => (
+                              <span key={i} className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="flex items-center gap-4">
+                            {project.github && (
+                              <a 
+                                href={project.github} 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="flex items-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                              >
+                                <Icons.Github />
+                                <span>View Code</span>
+                              </a>
+                            )}
+                            {project.live && (
+                              <a 
+                                href={project.live} 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="flex items-center gap-2 px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                              >
+                                <Icons.Globe />
+                                <span>Live Demo</span>
+                              </a>
+                            )}
                           </div>
                         </div>
+
+                        {/* Visual Side */}
+                        <div className={`lg:col-span-5 ${index % 2 === 1 ? 'lg:order-1' : ''} relative hidden lg:block`}>
+                          {/* UPDATED: Uses bg-linear-to-tr (Tailwind v4 syntax) */}
+                          <div className="absolute inset-0 bg-linear-to-tr from-violet-500/20 to-indigo-500/20 rounded-3xl transform rotate-3 transition-transform group-hover:rotate-2"></div>
+                          
+                          <div className="relative rounded-3xl p-1 border border-gray-200 dark:border-gray-700 h-80 overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-xl">
+                            {activeImage ? (
+                               <img 
+                                 src={activeImage} 
+                                 alt={project.title}
+                                 className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500 ease-out"
+                               />
+                            ) : (
+                              // Fallback if image path is broken/missing
+                              <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-2xl">
+                                {React.cloneElement(project.icon, { width: 64, height: 64, className: "text-gray-400" })}
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             ))}
