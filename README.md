@@ -53,7 +53,7 @@ Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:30
 
 I am actively seeking Software Engineering roles starting May 2026.
 
-   Email: asingh19@student.ysu.edu
+   Email: aayushksinghdev@gmail.com (preferred)| asingh19@student.ysu.edu
    LinkedIn: Aayush Kumar Singh
    GitHub: @singhaayush01
 
