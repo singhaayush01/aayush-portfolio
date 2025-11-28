@@ -141,8 +141,11 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
         },
         body: JSON.stringify({ 
           name: formData.name,
-          email: formData.email,
           message: formData.message,
+          // CRITICAL FIX: Send email as _replyto field.
+          // This ensures the message body only reports 'Name' and 'Message', 
+          // while still allowing you to reply directly to the sender.
+          _replyto: formData.email, 
           _subject: `Portfolio Contact from ${formData.name}`,
         }),
       });
@@ -161,7 +164,6 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
 
   const handleClose = () => {
     onClose();
-    // Reset status on manual close
     setTimeout(() => setStatus('idle'), 500); 
   };
 
@@ -187,6 +189,7 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           <input 
             type="text" 
             id="name" 
+            name="name" // Ensure name attribute is present
             required
             className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
             placeholder="Your Name"
@@ -200,6 +203,7 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           <input 
             type="email" 
             id="email" 
+            name="email" // Ensure name attribute is present
             required
             className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
             placeholder="you@example.com"
@@ -212,6 +216,7 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Message</label>
           <textarea 
             id="message" 
+            name="message" // Ensure name attribute is present
             required
             rows={4}
             className="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white resize-none"
@@ -600,7 +605,7 @@ const App = () => {
               </div>
               <div className="mt-8">
                 <a 
-                  href="assets/pdf/resume_2025_nov.pdf" 
+                  href="/Users/aayushsingh/Documents/portfolio/assets/pdf/resume_2025_nov.pdf" 
                   download
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
