@@ -57,7 +57,8 @@ const projectCategories = [
         tech: ['Python', 'PyTorch', 'Gymnasium', 'DQN', 'CV'],
         github: 'https://github.com/singhaayush01/mario-rl',
         live: null,
-        image: '/mario.png', // ADDED: Image path
+        image: '/mario.png', // The light mode image
+        darkImage: '/mario-dark.png', // Dark mode specific image
       },
       {
         title: 'Cliffe College Assistant (RAG System)',
@@ -66,7 +67,8 @@ const projectCategories = [
         tech: ['Next.js', 'LangChain', 'Python', 'Vector DB', 'React'],
         github: 'https://github.com/singhaayush01/cliffe-college-assistant',
         live: null,
-        image: '/cliffe-rag.png', // ADDED: Image path
+        image: '/cliffe-rag.png', 
+        darkImage: '/cliffe-rag-dark.png', 
       },
       {
         title: 'TinyTextGPT',
@@ -75,7 +77,8 @@ const projectCategories = [
         tech: ['PyTorch', 'Transformers', 'NLP', 'Tokenization', 'Python'],
         github: 'https://github.com/singhaayush01/TinyTextGPT-Gutenberg-Text-Transformer',
         live: null,
-        image: '/tinytextGpt.png', // ADDED: Image path
+        image: '/tinytextGpt.png', 
+        darkImage: '/tinytextGpt-dark.png',
       },
     ]
   },
@@ -90,7 +93,8 @@ const projectCategories = [
         tech: ['C++', 'Cryptography', 'Number Theory', 'Systems Programming'],
         github: 'https://github.com/singhaayush01/RSA_E_D_Project',
         live: null,
-        image: '/tinytextGpt.png', 
+        image: '/rsa.png', 
+        darkImage: '/rsa-dark.png',
       },
       {
         title: 'Personal Portfolio Website',
@@ -99,7 +103,8 @@ const projectCategories = [
         tech: ['React', 'Next.js', 'Tailwind CSS', 'Vercel'],
         github: 'https://github.com/singhaayush01/aayush-portfolio', 
         live: null,
-        image: '/portfolio-website.png', // ADDED: Image path
+        image: '/portfolio-website.png', 
+        darkImage: '/portfolio-website-dark.png',
       },
     ]
   }
@@ -125,7 +130,6 @@ const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, label }) => (
 
 const App = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
-  // Changed default to 'false' for Light Mode start
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -133,15 +137,20 @@ const App = () => {
   // --- Effects and Handlers ---
 
   useEffect(() => {
-    document.body.classList.toggle('dark', isDarkMode);
-    document.body.classList.toggle('light', !isDarkMode);
+    // Apply dark class to <html> for Tailwind dark mode to work
+    document.documentElement.classList.toggle('dark', isDarkMode);
     localStorage.setItem('darkMode', isDarkMode.toString());
   }, [isDarkMode]);
 
   useEffect(() => {
+    // Initial check for system preference or saved preference
     const savedMode = localStorage.getItem('darkMode');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
     if (savedMode !== null) {
       setIsDarkMode(savedMode === 'true');
+    } else {
+      setIsDarkMode(systemPrefersDark);
     }
   }, []);
 
@@ -150,7 +159,7 @@ const App = () => {
       setScrolled(window.scrollY > 20);
       
       const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollY = window.pageYOffset + 150;
+      const scrollY = window.pageYOffset + 150; 
 
       sections.forEach(current => {
         if (current) {
@@ -177,8 +186,10 @@ const App = () => {
     }
   };
 
+  const profileImageSrc = isDarkMode ? '/aayush-dark.png' : '/aayush.png';
+
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-300 ${isDarkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
+    <div className={`min-h-screen font-sans transition-colors duration-300 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
       
       {/* NAVBAR */}
       <header 
@@ -248,10 +259,11 @@ const App = () => {
               </button>
             ))}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-800 flex justify-between items-center">
-              <span className="text-sm text-gray-500">Switch Theme</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">Switch Theme</span>
               <button
                 onClick={() => setIsDarkMode(prev => !prev)}
                 className="p-2 rounded-full bg-gray-100 dark:bg-gray-800"
+                aria-label="Toggle dark mode"
               >
                 {isDarkMode ? (
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9h-9V3z" /><path d="M19 20h2" /><path d="M21 17h2" /><path d="M21 14h2" /><path d="M12 21v2" /><path d="M9 20h2" /><path d="M7 17h2" /><path d="M4 14h2" /><path d="M4 17h2" /><path d="M2 14h2" /><path d="M19 14h2" /></svg>
@@ -267,8 +279,9 @@ const App = () => {
       <main>
         {/* HERO SECTION */}
         <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-b from-violet-50/50 to-transparent dark:from-violet-900/10 dark:to-transparent z-0"></div>
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 pointer-events-none"></div>
+          {/* UPDATED: bg-linear-to-b instead of bg-gradient-to-b */}
+          <div className="absolute inset-0 bg-linear-to-b from-violet-50/50 dark:from-violet-900/10 to-transparent z-0"></div>
+          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.08] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 pointer-events-none"></div>
           
           <div className="container mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 text-center md:text-left order-2 md:order-1">
@@ -276,6 +289,7 @@ const App = () => {
                 Available for Roles Starting May 2026
               </div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
+                {/* UPDATED: bg-linear-to-r instead of bg-gradient-to-r */}
                 Building <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400">Intelligent</span> Systems.
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto md:mx-0">
@@ -285,7 +299,7 @@ const App = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
                 <button 
                   onClick={() => scrollToSection('projects')}
-                  className="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold rounded-xl hover:-translate-y-0.5 transition-all shadow-lg hover:shadow-xl"
+                  className="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold rounded-xl hover:-translate-y-0.5 transition-all shadow-lg hover:shadow-xl dark:shadow-violet-900/50"
                 >
                   View My Work
                 </button>
@@ -303,14 +317,15 @@ const App = () => {
               <div className="relative w-72 h-72 sm:w-96 sm:h-96">
                 <div className="absolute inset-0 bg-violet-500/20 rounded-full blur-3xl animate-pulse"></div>
                 <div className="absolute inset-4 bg-indigo-500/20 rounded-full blur-2xl"></div>
-                {/* Updated Image Source to use Local File */}
+                
+                {/* Conditional Image Source */}
                 <img 
-                  src="/aayush.png" 
+                  src={profileImageSrc} 
                   alt="Aayush K. Singh" 
                   className="relative z-10 w-full h-full object-cover rounded-3xl rotate-3 shadow-2xl border-4 border-white dark:border-gray-800"
                 />
                 
-                {/* Floating Tech Badges */}
+                {/* Floating Tech Badges - Colors already dark mode friendly */}
                 <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 animate-bounce delay-700">
                   <Icons.Cpu />
                 </div>
@@ -331,6 +346,7 @@ const App = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Paragraphs - Colors already dark mode friendly */}
               <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               <p>
                 My journey is defined by a dual focus: <span className="text-gray-900 dark:text-white font-medium">precision</span> and <span className="text-gray-900 dark:text-white font-medium">innovation</span>.
@@ -349,6 +365,7 @@ const App = () => {
               <div className="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-700">
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Quick Stats</h4>
                 <div className="space-y-4">
+                  {/* Quick Stats - Colors already dark mode friendly */}
                   <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm">
                     <span className="text-gray-600 dark:text-gray-400">Education</span>
                     <span className="font-semibold text-gray-900 dark:text-white">B.S. Comp Sci, YSU</span>
@@ -383,6 +400,7 @@ const App = () => {
               {coreSkills.map((category, index) => (
                 <div 
                   key={index}
+                  // Colors already dark mode friendly
                   className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-800 transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="w-12 h-12 bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -431,6 +449,7 @@ const App = () => {
                         <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                           {project.title}
                         </h3>
+                        {/* Paragraph Background - Colors already dark mode friendly */}
                         <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6 border border-gray-100 dark:border-gray-700 shadow-sm">
                           {project.description}
                         </div>
@@ -471,16 +490,19 @@ const App = () => {
 
                       {/* Decorative/Visual Side */}
                       <div className={`lg:col-span-5 ${index % 2 === 1 ? 'lg:order-1' : ''} relative hidden lg:block`}>
-                        {project.image ? (
+                        {(project.image || project.darkImage) ? (
                           <div className="relative h-64 w-full overflow-hidden rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700">
+                            {/* Conditional Image Source for Projects */}
                             <img 
-                              src={project.image} 
+                              src={isDarkMode && project.darkImage ? project.darkImage : project.image} 
                               alt={project.title} 
                               className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105" 
                             />
                           </div>
                         ) : (
+                          // Placeholder colors already dark mode friendly
                           <div className="relative bg-gray-100 dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 h-80 flex items-center justify-center overflow-hidden">
+                            {/* UPDATED: bg-linear-to-tr instead of bg-gradient-to-tr */}
                             <div className="absolute inset-0 bg-linear-to-tr from-violet-500/20 to-indigo-500/20 rounded-3xl transform rotate-3 transition-transform group-hover:rotate-2"></div>
                             <div className="w-full space-y-3 opacity-50 relative z-10">
                               <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
@@ -515,6 +537,7 @@ const App = () => {
             </p>
             
             <div className="flex justify-center gap-6">
+              {/* Social Links - Colors already dark mode friendly */}
               <SocialLink 
                 href="mailto:aayushksinghdev@gmail.com" 
                 icon={<Icons.Mail />} 
