@@ -1,12 +1,14 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  // Ensure Tailwind scans your source files
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
+      // Map your custom CSS variables to Tailwind classes
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -21,6 +23,7 @@ const config: Config = {
         "accent-foreground": "var(--accent-foreground)",
       },
       fontFamily: {
+        // These link to the fonts defined in app/layout.tsx
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],
       },
