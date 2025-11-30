@@ -43,7 +43,7 @@ const projectCategories = [
     description: "Systems that learn, adapt, and reason.",
     projects: [
       {
-        title: 'Cliffe College Assistant (RAG System) (Independent Project)',
+        title: 'Ai Assistant (RAG System) (Independent Project)',
         icon: <Icons.Code />,
         bulletPoints: [
           "Engineered and Deployed a Full-Stack RAG System: Architected a robust Retrieval-Augmented Generation (RAG) pipeline using LangChain, connecting a FastAPI backend to a PineconeVectorStore to convert large, unstructured college handbooks (PDFs and web content) into an interactive Q&A resource.",
@@ -53,7 +53,7 @@ const projectCategories = [
         tech: ['Next.js', 'LangChain', 'Python', 'Vector DB', 'React'],
         github: 'https://github.com/singhaayush01/cliffe-college-assistant',
         live: null,
-        image: '/cliffe-rag.png', 
+        image: 'tinytextGpt.png', 
       },
       {
         title: 'Super Mario Reinforcement Learning Agent',
