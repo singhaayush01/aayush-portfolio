@@ -338,8 +338,8 @@ const App = () => {
       
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
 
-      {/* NAVBAR */}
-      <header 
+{/* NAVBAR */}
+<header 
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b ${
           scrolled 
             ? 'bg-background/80 backdrop-blur-md border-border' 
@@ -397,22 +397,30 @@ const App = () => {
           </div>
         </div>
 
+        {/* --- FIX 1: IMPROVED MOBILE MENU --- */}
+        {/* Changed absolute to fixed, added solid colors (white/zinc-950) to ensure opacity, and added h-screen to cover content */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b border-border shadow-lg p-4 flex flex-col gap-2">
+          <div className="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 p-6 flex flex-col gap-4 overflow-y-auto z-50 shadow-2xl">
             {navItems.map(item => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-left py-3 px-4 rounded-lg font-medium hover:bg-muted transition-colors"
+                className="text-left py-4 px-4 rounded-xl font-semibold text-lg hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-800"
               >
                 {item.name}
               </button>
             ))}
-            <div className="h-px bg-border my-2"></div>
-            <button onClick={() => { setIsContactModalOpen(true); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 font-medium text-accent">
+            <div className="h-px bg-zinc-200 dark:bg-zinc-800 my-2"></div>
+            <button 
+                onClick={() => { setIsContactModalOpen(true); setIsMobileMenuOpen(false); }} 
+                className="text-left py-4 px-4 rounded-xl font-semibold text-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow-md"
+            >
                 Send Message
             </button>
-            <button onClick={() => setIsDarkMode(!isDarkMode)} className="text-left py-3 px-4 font-medium text-muted-foreground">
+            <button 
+                onClick={() => setIsDarkMode(!isDarkMode)} 
+                className="text-left py-4 px-4 rounded-xl font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+            >
                 {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             </button>
           </div>
@@ -420,8 +428,9 @@ const App = () => {
       </header>
 
       <main className="pt-16">
-        {/* HERO SECTION */}
-        <section id="home" className="min-h-[90vh] flex items-center px-6 relative overflow-hidden">
+{/* HERO SECTION */}
+        {/* FIX 2: Added py-24 to ensure vertical spacing on mobile so image doesn't touch edges */}
+        <section id="home" className="min-h-[90vh] flex items-center px-6 relative overflow-hidden py-24 lg:py-0">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-indigo-500/10 via-background to-background dark:from-indigo-500/5"></div>
           
           <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
@@ -475,7 +484,8 @@ const App = () => {
               </div>
             </div>
 
-            <div className="flex justify-center lg:justify-end relative">
+            {/* FIX 2 CONTINUED: Added mb-12 to this container to push content away from bottom on mobile */}
+            <div className="flex justify-center lg:justify-end relative mb-12 lg:mb-0">
               <div className="relative w-72 h-72 sm:w-96 sm:h-96">
                 <div className="absolute inset-0 bg-accent/20 rounded-full blur-3xl transform rotate-12"></div>
                 <img 
@@ -487,7 +497,6 @@ const App = () => {
             </div>
           </div>
         </section>
-
         {/* SKILLS SECTION */}
         <section id="skills" className="py-24 px-6 border-t border-border/50">
           <div className="container mx-auto">
